@@ -28,7 +28,7 @@
 $(document).ready(function(){
     $("#getReq").click(function(){
         $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(data, status){
-            // alert("Data: " + data + "\nStatus: " + status);
+             alert("Data: " + data + "\nStatus: " + status);
             $("#result").text(JSON.stringify(data)  );
         });
       });
