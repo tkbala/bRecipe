@@ -23,9 +23,27 @@
 
     <!-- Our Website CSS Styles -->
     <link rel="stylesheet" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#getReq").click(function(){
+        $.get("https://URL OF YOUR LAMBDA API GATEWAY?TableName=Tasks", function(data, status){
+            // alert("Data: " + data + "\nStatus: " + status);
+            $("#result").text(JSON.stringify(data)  );
+        });
+      });
+    });
+</script>
+
 
 </head>
 <body ng-app="tutorialWebApp">
+    <div>
+  <br>
+<button id="getReq">Send HTTP GET request to a AWS and get result</button>
+<br>
+</div>
+
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
