@@ -27,7 +27,7 @@
 <script>
 $(document).ready(function(){
     $("#getReq").click(function(){
-        $.get("https://URL OF YOUR LAMBDA API GATEWAY?TableName=Tasks", function(data, status){
+        $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(data, status){
             // alert("Data: " + data + "\nStatus: " + status);
             $("#result").text(JSON.stringify(data)  );
         });
