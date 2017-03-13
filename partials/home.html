@@ -1,4 +1,24 @@
 
+<script>
+$(document).ready(function(){
+    $("#getReq").click(function(){
+        $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(data, status){
+             alert("Data: " + data + "\nStatus: " + status);
+            $("#result").text(JSON.stringify(data)  );
+        });
+      });
+    });
+</script>
+
+<body ng-app="tutorialWebApp">
+    <div>
+  <br>
+<button id="getReq">Send HTTP GET request to a AWS and get result</button>
+<br>
+</div>
+<div id="result">
+  Result
+</div>
 
 <div class="section">
 

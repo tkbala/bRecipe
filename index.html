@@ -24,28 +24,11 @@
     <!-- Our Website CSS Styles -->
     <link rel="stylesheet" href="css/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-    $("#getReq").click(function(){
-        $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(data, status){
-             alert("Data: " + data + "\nStatus: " + status);
-            $("#result").text(JSON.stringify(data)  );
-        });
-      });
-    });
-</script>
+
 
 
 </head>
-<body ng-app="tutorialWebApp">
-    <div>
-  <br>
-<button id="getReq">Send HTTP GET request to a AWS and get result</button>
-<br>
-</div>
-<div id="result">
-  Result
-</div>
+
 
 
 <!--[if lt IE 7]>
