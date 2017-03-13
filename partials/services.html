@@ -1,4 +1,26 @@
 <!-- Page Content -->
+<script>
+function myFunction() {
+  // Declare variables 
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+}
+</script>
 
 <div class="container">
 
@@ -32,12 +54,30 @@
     <div class="row">
 
         <div class="col-md-8">
-            <h2 class="page-header">Our Premium Services</h2>
+         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
 
-            <p>Lid est laborum dolo rumes fugats untras. Etharums ser quidem rerum facilis dolores nemis omnis fugats
-                vitaes nemo minima rerums unsers sadips amets. Sed ut perspiciatis unde omnis iste natus error sit
-                voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
-                veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            <table id="myTable">
+              <tr class="header">
+                <th style="width:60%;">Name</th>
+                <th style="width:40%;">Country</th>
+              </tr>
+              <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Germany</td>
+              </tr>
+              <tr>
+                <td>Berglunds snabbkop</td>
+                <td>Sweden</td>
+              </tr>
+              <tr>
+                <td>Island Trading</td>
+                <td>UK</td>
+              </tr>
+              <tr>
+                <td>Koniglich Essen</td>
+                <td>Germany</td>
+              </tr>
+            </table>
         </div>
 
         <div class="col-md-4">
