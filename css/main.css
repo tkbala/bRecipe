@@ -171,5 +171,5 @@ footer {
 #myTable tr.header, #myTable tr:hover {
     /* Add a grey background color to the table header and on hover */
     background-color: #f1f1f1;
-    background-image: url('/bRecipe/img/search_icon.png'); /* Add a search icon to input */
+    
 }
