@@ -33,7 +33,10 @@ $(document).ready(function(){
 
 </script>
 -->
-<script>$(document).ready(function(){
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
+<script>
+AWS.config.region = 'us-west-1';
+$(document).ready(function(){
     $("#getReq").click(function(){
         var pRecipeID = 1;
         var pImageLink = 'https://s3-us-west-1.amazonaws.com/brecipe/chicken_biryani.jpg';
@@ -44,7 +47,7 @@ $(document).ready(function(){
         pRecipeName = document.getElementById("NameInput").value;
         pRecipeIngredients = document.getElementById("IngredientsInput").value;
         pRecipeDirections = document.getElementById("DirectionsInput").value;
-$.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
+        $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
             
             var nItems = table.Items.length;
             var rIDs = [];
@@ -53,33 +56,53 @@ $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?Tab
 
             };
             var temp_UID = 1;
-            while($.inArray(temp_UID, rIDs)!=-1){
+            while(($.inArray(temp_UID, rIDs)!=-1)||(temp_UID==1) ){
               temp_UID = Math.floor(Math.random() * 200);
-              if(temp_UID==1){
-                temp_UID=temp_UID+1;
-              }
+              
             }
             pRecipeID = temp_UID;
+            console.log("Outside:");
+                console.log(pRecipeID);
 
-      $.ajax({
-          url: 'https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes',
-          type: 'POST',
-          data: JSON.stringify({"TableName": "Recipes", "Item": {"RecipeID": pRecipeID, "ImageLink": pImageLink, "RecipeIngredients": pRecipeIngredients,"RecipeDirections": pRecipeDirections,"RecipeName": pRecipeName}}),
-          success: function(data) {
-            alert("POSTed successfully");
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
+
+        var bucket = new AWS.S3({params: {Bucket: 'brecipe'}});
+        var fileChooser = document.getElementById('file');
+        var file = fileChooser.files[0];
+        if (file) {
+        var params = {Key: 'FILE_NAME', ContentType: file.type, Body: file};
+        bucket.upload(params).on('httpUploadProgress', function(evt) {
+        console.log("Uploaded :: " + parseInt((evt.loaded * 100) / evt.total)+'%');
+        }).send(function(err, data) {
+        alert("File uploaded successfully.");
+            });
+        }    
+
+
+            $.ajax({
+                console.log("Ajax:");
+                console.log(pRecipeID);
+
+                url: 'https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes',
+                type: 'POST',
+                data: JSON.stringify({"TableName": "Recipes", "Item": {"RecipeID": pRecipeID, "ImageLink": pImageLink, "RecipeIngredients": pRecipeIngredients,"RecipeDirections": pRecipeDirections,"RecipeName": pRecipeName}}),
+                success: function(data) {
+                alert("POSTed successfully");
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
                 alert("Error");
-            }
+                }
+            });
+
+
+
         });
-  });
     });
 });
 
   
 </script>
 
-
+<!--
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
 <script type="text/javascript">
 /*
@@ -104,6 +127,7 @@ $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?Tab
     return false;
     });
 </script>
+-->
 
 
 </head>
