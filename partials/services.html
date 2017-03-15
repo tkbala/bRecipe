@@ -26,11 +26,8 @@ $(document).ready(function(){
 
 </script>
 </head>
-<body>
-<div>
-<button id="getReq">Send HTTP POST request to a AWS</button>
-</div>
-</body>
+
+
 
 <div class="container">
 
@@ -53,9 +50,22 @@ $(document).ready(function(){
     <div class="row">
          <div class="col-md-16">
             <h2 class="page-header">Add Your Recipe</h2>
+            <div class="row">
+             <p> Recipe Name </p>   
             <input type="text" id="NameInput" >
+        </div>
+            <div class="row">
+                <p> Recipe Ingredients </p>
             <input type="text" id="IngredientsInput" rows = "10" >
+            </div>
+            <div class="row">
+                <p> Recipe Directions </p>
             <input type="text" id="DirectionsInput" rows = "10" >
+            </div>
+            <div class ="row">
+            <button id="getReq">Send HTTP POST request to a AWS</button>
+            </div>
+
         </div>
     </div>
     <!-- /.row -->
