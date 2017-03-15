@@ -130,7 +130,7 @@ function postRecipe(){
             document.getElementById("fname").value = pRecipeID.toString();
             pImageLink = "https://s3-us-west-1.amazonaws.com/brecipe/"+pRecipeID.toString();
 
-
+            document.getElementById("file_upload").submit()
 
             $.ajax({
 
@@ -243,7 +243,7 @@ function postRecipe(){
     </div>
 
     <!-- /.row -->
- <form action="http://brecipe.s3-us-west-1.amazonaws.com/" method="post" enctype="multipart/form-data">
+ <form id="file_upload" action="http://brecipe.s3-us-west-1.amazonaws.com/" method="post" enctype="multipart/form-data">
     Image of the Recipe:
     <input type="hidden"  id="fname" name="key" value="123" /><br />
 
@@ -255,7 +255,8 @@ function postRecipe(){
     File: 
     <input type="file"   name="file" /> <br />
     <!-- The elements after this will be ignored -->
-    <input type="submit" onclick="postRecipe()" name="submit" value="POST Recipe with File" />
+    <!-- <input type="submit" onclick="postRecipe()" name="submit" value="POST Recipe with File" /> -->
+    <button onclick="postRecipe()" name="submit" value="POST Recipe with File" />
   </form>
 
 </div>
