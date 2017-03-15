@@ -1,6 +1,7 @@
 <!-- Page Content -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.0.0-rc1.min.js"></script>  
 <script>
 $(document).ready(function(){
     $("#getReq").click(function(){
@@ -29,7 +30,25 @@ $(document).ready(function(){
 });
 
 </script>
-
+<script>        
+var s3BucketName = 'brecipe';
+function uploadFile() {           
+    var s3 = new AWS.S3({            params: {Bucket: s3BucketName} });             
+    var file = document.getElementById('fileToUpload').files[0];           
+    if (file) {             
+         s3.putObject({Key: file.name, ContentType: file.type, Body: file, ACL: "public-read"},              function (err, data) {                
+            if (data !=== null) {                    
+                alert("Got it!"); 
+            }                
+            else {                    
+                alert("Upload failed!");                
+            }              
+        });          
+    }        
+}  
+</script>  
+<input type="file" id="fileToUpload"/>  <button onclick="uploadFile()">Upload to S3</button>  
+<!--
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
 <script type="text/javascript">
 /*
@@ -54,6 +73,7 @@ $(document).ready(function(){
     return false;
     });
 </script>
+-->
 
 </head>
 
