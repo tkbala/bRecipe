@@ -39,7 +39,7 @@ $(document).ready(function(){
     });
 */
     AWS.config.region = 'Northern California';
-    $("#fileUploadForm").submit(function() {
+    $("#fileSubmit").click(function() {
         var bucket = new AWS.S3({params: {Bucket: 'brecipe'}});
         var fileChooser = document.getElementById('file');
         var file = fileChooser.files[0];
@@ -102,6 +102,9 @@ $(document).ready(function(){
     <form id="fileUploadForm" method="post" enctype="multipart/form-data">
 <input type="file" name="file" id="file" value="dataFile" required="">
 </form>
+<div class ="row">
+            <button id="fileSubmit">Upload to S3</button>
+            </div>
     <!-- /.row -->
 
 
