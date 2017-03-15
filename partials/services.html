@@ -122,15 +122,11 @@ function postRecipe(){
               
             }
             pRecipeID = temp_UID;
-            console.log("Outside:");
-                console.log(pRecipeID);
 
 
 
 
             $.ajax({
-                console.log("Ajax:");
-                console.log(pRecipeID);
 
                 url: 'https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes',
                 type: 'POST',
@@ -253,7 +249,7 @@ function postRecipe(){
     File: 
     <input type="file"   name="file" /> <br />
     <!-- The elements after this will be ignored -->
-    <input type="submit" onclick="postRecipe" name="submit" value="POST Recipe with File" />
+    <input type="submit" onclick="postRecipe()" name="submit" value="POST Recipe with File" />
   </form>
 
 </div>
