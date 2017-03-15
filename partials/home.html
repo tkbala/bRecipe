@@ -31,6 +31,34 @@ function myFunction() {
   }
 }
 </script>
+<script type="text/javascript">
+function getValidrID() {
+  var UID = 1;
+  $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
+            
+            var nItems = table.Items.length;
+            var rIDs = [];
+            for (var i = 0; i <nItems ; i++) {
+                rIDs.push(parseInt(table.Items[i].RecipeID));
+
+            };
+            var temp_UID = 1;
+            while($.inArray(temp_UID, rIDs)!=-1){
+              temp_UID = Math.floor(Math.random() * 20);
+              if(temp_UID==1){
+                temp_UID=temp_UID+1;
+              }
+            }
+            UID = temp_UID;
+            });
+
+        while(UID == 1){
+
+        }
+        return(UID);
+  }
+
+</script>
 <script>
 $(document).ready(function(){
     var tableHTML = '<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for recipes.."> <table id="myTable"> <tr class="header"> <th style="width:100%;">Recipes</th> <th></th></tr>';    

@@ -2,18 +2,20 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.0.0-rc1.min.js"></script>  
+<!--
 <script>
 $(document).ready(function(){
     $("#getReq").click(function(){
-        var pRecipeID = 2;
+        var pRecipeID = 1;
         var pImageLink = 'https://s3-us-west-1.amazonaws.com/brecipe/chicken_biryani.jpg';
         var pRecipeDirections = 'Cut and Mix all of them';
         var pRecipeIngredients = '1.Apple \n 2. Banana';
         var pRecipeName = 'AppleBananaSalad';
-        pRecipeID = pRecipeID+1;
+        
         pRecipeName = document.getElementById("NameInput").value;
         pRecipeIngredients = document.getElementById("IngredientsInput").value;
         pRecipeDirections = document.getElementById("DirectionsInput").value;
+
 
       $.ajax({
           url: 'https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes',
@@ -29,6 +31,52 @@ $(document).ready(function(){
     });
 });
 
+</script>
+-->
+<script>$(document).ready(function(){
+    $("#getReq").click(function(){
+        var pRecipeID = 1;
+        var pImageLink = 'https://s3-us-west-1.amazonaws.com/brecipe/chicken_biryani.jpg';
+        var pRecipeDirections = 'Cut and Mix all of them';
+        var pRecipeIngredients = '1.Apple \n 2. Banana';
+        var pRecipeName = 'AppleBananaSalad';
+        
+        pRecipeName = document.getElementById("NameInput").value;
+        pRecipeIngredients = document.getElementById("IngredientsInput").value;
+        pRecipeDirections = document.getElementById("DirectionsInput").value;
+$.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
+            
+            var nItems = table.Items.length;
+            var rIDs = [];
+            for (var i = 0; i <nItems ; i++) {
+                rIDs.push(parseInt(table.Items[i].RecipeID));
+
+            };
+            var temp_UID = 1;
+            while($.inArray(temp_UID, rIDs)!=-1){
+              temp_UID = Math.floor(Math.random() * 200);
+              if(temp_UID==1){
+                temp_UID=temp_UID+1;
+              }
+            }
+            pRecipeID = temp_UID;
+
+      $.ajax({
+          url: 'https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes',
+          type: 'POST',
+          data: JSON.stringify({"TableName": "Recipes", "Item": {"RecipeID": pRecipeID, "ImageLink": pImageLink, "RecipeIngredients": pRecipeIngredients,"RecipeDirections": pRecipeDirections,"RecipeName": pRecipeName}}),
+          success: function(data) {
+            alert("POSTed successfully");
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert("Error");
+            }
+        });
+  });
+    });
+});
+
+  
 </script>
 
 
@@ -80,7 +128,7 @@ $(document).ready(function(){
     </div>
     <!-- /.row -->
 
-    <div class="row">
+    
          <div class="col-md-16">
             <h2 class="page-header">Add Your Recipe</h2>
             </div>
@@ -111,30 +159,25 @@ $(document).ready(function(){
         </td>
     </tr>
     <tr>
-            </div>
+            
             <div class ="row">
             <button id="getReq">Send HTTP POST request to a AWS</button>
             </div>
 </tr>
 </table>
-        </div>
+        
     </div>
 
-    <form id="fileUploadForm" method="post" enctype="multipart/form-data">
-<input type="file" name="file" id="file" value="dataFile" required="">
-</form>
-<div class ="row">
-            <button id="fileSubmit">Upload to S3</button>
-            </div>
     <!-- /.row -->
  <form action="http://brecipe.s3-us-west-1.amazonaws.com/" method="post" enctype="multipart/form-data">
-    Key to upload: 
-    <input type="input"  name="key" value="${filename}" /><br />
+    Image of the Recipe:
+    <input type="hidden"  name="key" value="${filename}" /><br />
+
     <!--
     <input type="hidden" name="success_action_redirect" value="http://brecipe.s3-us-west-1.amazonaws.com/successful_upload.html" />
 -->
-    Content-Type: 
-    <input type="input"  name="Content-Type" value="image/jpeg" /><br />
+    
+    <input type="hidden"  name="Content-Type" value="image/jpeg" /><br />
     File: 
     <input type="file"   name="file" /> <br />
     <!-- The elements after this will be ignored -->
