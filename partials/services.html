@@ -33,8 +33,9 @@ $(document).ready(function(){
 
 </script>
 -->
-<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
+
 <!--
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
 <script>
 AWS.config.region = 'us-west-1';
 $(document).ready(function(){
@@ -99,6 +100,7 @@ $(document).ready(function(){
   
 </script>
 -->
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
 <script>
 AWS.config.region = 'us-west-1';
 function postRecipe(){
@@ -125,7 +127,7 @@ function postRecipe(){
               
             }
             pRecipeID = temp_UID;
-
+            
 
 
 
@@ -242,7 +244,7 @@ function postRecipe(){
     <!-- /.row -->
  <form action="http://brecipe.s3-us-west-1.amazonaws.com/" method="post" enctype="multipart/form-data">
     Image of the Recipe:
-    <input type="hidden"  id="fname" name="key" value="${filename}" /><br />
+    <input type="hidden"  id="fname" name="key" value="123" /><br />
 
     <!--
     <input type="hidden" name="success_action_redirect" value="http://brecipe.s3-us-west-1.amazonaws.com/successful_upload.html" />
