@@ -225,9 +225,10 @@ function postRecipe(){
                     <textarea type="text" id="DirectionsInput" rows = "10" ></textarea>
                 </label>
             </div>
-            <div class="form-row">
-                <label>
+            
                     <form id="file_upload" action="http://brecipe.s3-us-west-1.amazonaws.com/" method="post" enctype="multipart/form-data">
+                        <div class="form-row">
+                <label>
     <span>Image of the Recipe</span>
     <input type="hidden"  id="fname" name="key" value="123" />
 
@@ -239,6 +240,7 @@ function postRecipe(){
     
     <input type="file"   name="file" /> 
     </label>
+</div>
     <!-- The elements after this will be ignored -->
     <!-- <input type="submit" onclick="postRecipe()" name="submit" value="POST Recipe with File" /> -->
     <button onclick="postRecipe()" name="btnSubmit" >POST Recipe with File</button>
