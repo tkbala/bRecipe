@@ -34,6 +34,7 @@ $(document).ready(function(){
 </script>
 -->
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
+<!--
 <script>
 AWS.config.region = 'us-west-1';
 $(document).ready(function(){
@@ -97,7 +98,9 @@ $(document).ready(function(){
 
   
 </script>
+-->
 <script>
+AWS.config.region = 'us-west-1';
 function postRecipe(){
   var pRecipeID = 1;
         var pImageLink = 'https://s3-us-west-1.amazonaws.com/brecipe/chicken_biryani.jpg';
