@@ -33,14 +33,15 @@ function myFunction() {
 </script>
 <script>
 $(document).ready(function(){
-    document.getElementById('recipeTable').innerHTML = '<table id="myTable"> <tr class="header"> <th style="width:60%;">Name</th> <th style="width:40%;">Country</th></tr>';    
+    var tableHTML = '<table id="myTable"> <tr class="header"> <th style="width:60%;">Name</th> <th style="width:40%;">Country</th></tr>';    
     $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
             var nItems = table.Items.length;
             for (var i = 0; i <nItems ; i++) {
-                document.getElementById('recipeTable').innerHTML+= '<tr>'+table.Items[i].RecipeName+'</tr>';
+                tableHTML+= '<tr>'+table.Items[i].RecipeName+'</tr>';
 
             };
-            document.getElementById('recipeTable').innerHTML+='</table>';
+            tableHTML+='</table>';
+            document.getElementById('recipeTable').innerHTML = tableHTML;
 
 
             /*
