@@ -208,7 +208,7 @@ function postRecipe(){
             </div>
         <form class="form-basic" action="#">
             <div class="form-title-row">
-                <h1>dd Your Recipe</h1>
+                <h1>Add Your Recipe</h1>
             </div>
             <div class="form-row">
                 <label>
@@ -231,7 +231,7 @@ function postRecipe(){
             
                     <form id="file_upload" action="http://brecipe.s3-us-west-1.amazonaws.com/" method="post" enctype="multipart/form-data">
                         <div class="form-row">
-                <label>
+                
     
     <input type="hidden"  id="fname" name="key" value="123" />
 
@@ -240,6 +240,7 @@ function postRecipe(){
 -->
     
     <input type="hidden"  name="Content-Type" value="image/jpeg" />
+    <label>
     <span>Image</span>
     <input type="file"   name="file" /> 
     </label>
