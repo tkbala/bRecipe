@@ -80,22 +80,39 @@ $(document).ready(function(){
     <div class="row">
          <div class="col-md-16">
             <h2 class="page-header">Add Your Recipe</h2>
-            <div class="row">
-             <p> Recipe Name </p>   
-            <input type="text" id="NameInput" />
-        </div>
-            <div class="row">
-                <p> Recipe Ingredients </p>
-            <textarea id="IngredientsInput" rows = "10" ></textarea>
             </div>
-            <div class="row">
+        <table>
+            <tr>
+                <td>
+             <p> Recipe Name </p>   
+         </td>
+         <td>
+            <input type="text" id="NameInput" />
+        </td>
+        </tr>
+            <tr>
+                <td>
+                <p> Recipe Ingredients </p>
+            </td>
+            <td>
+            <textarea id="IngredientsInput" rows = "10" ></textarea>
+        </td>
+    </tr>
+            <tr>
+                <td>
+        
                 <p> Recipe Directions </p>
+            </td>
+            <td>
             <textarea type="text" id="DirectionsInput" rows = "10" ></textarea>
+        </td>
+    </tr>
+    <tr>
             </div>
             <div class ="row">
             <button id="getReq">Send HTTP POST request to a AWS</button>
             </div>
-
+</tr>
         </div>
     </div>
 
