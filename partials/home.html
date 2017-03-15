@@ -42,12 +42,7 @@ var itemParams = {
      data: {S: 'data'}
    }
 };
-table.putItem(itemParams, function() {
-    // Read the item from the table
-    table.getItem({Key: {id: {S: key}}}, function(err, data) {
-    console.log(data.Item); // print the item data
-    });
-});
+
 </script>
 
     <div>
