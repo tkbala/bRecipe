@@ -47,7 +47,7 @@ function uploadFile() {
     }        
 }  
 </script>  
-<input type="file" id="fileToUpload"/>  <button onclick="uploadFile()">Upload to S3</button>  
+
 <!--
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
 <script type="text/javascript">
@@ -74,7 +74,8 @@ function uploadFile() {
     });
 </script>
 -->
-
+<head>
+<input type="file" id="fileToUpload"/>  <button onclick="uploadFile()">Upload to S3</button>  
 </head>
 
 
@@ -137,24 +138,6 @@ function uploadFile() {
         </div>
     </div>
 
-    <form id="fileUploadForm" method="post" enctype="multipart/form-data">
-<input type="file" name="file" id="file" value="dataFile" required="">
-</form>
-<div class ="row">
-            <button id="fileSubmit">Upload to S3</button>
-            </div>
-    <!-- /.row -->
- <form action="http://brecipe.s3-us-west-1.amazonaws.com/" method="post" enctype="multipart/form-data">
-    Key to upload: 
-    <input type="input"  name="key" value="${filename}" /><br />
-    <input type="hidden" name="success_action_redirect" value="http://brecipe.s3-us-west-1.amazonaws.com/successful_upload.html" />
-    Content-Type: 
-    <input type="input"  name="Content-Type" value="image/jpeg" /><br />
-    File: 
-    <input type="file"   name="file" /> <br />
-    <!-- The elements after this will be ignored -->
-    <input type="submit" name="submit" value="Upload to Amazon S3" />
-  </form>
 
-</div>
+
 <!-- /.container -->
