@@ -42,7 +42,10 @@ var itemParams = {
      data: {S: 'data'}
    }
 };
-console.log(itemParams.Item.data); // print the item data
+table.getItem({Key: {id: {S: key}}}, function(err, data) {
+    console.log(data.Item); // print the item data
+    });
+
 
 </script>
 
