@@ -122,10 +122,18 @@ function replaceAll(str, find, replace) {
 <script>
 w3_open()
 function w3_open() {
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+    document.getElementById("main").style.marginLeft = "100%";
+  document.getElementById("mySidebar").style.width = "100%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+  }
+  else{
   document.getElementById("main").style.marginLeft = "25%";
   document.getElementById("mySidebar").style.width = "25%";
   document.getElementById("mySidebar").style.display = "block";
   document.getElementById("openNav").style.display = 'none';
+}
 }
 function w3_close() {
   document.getElementById("main").style.marginLeft = "0%";
