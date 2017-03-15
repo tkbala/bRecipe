@@ -60,9 +60,9 @@ function setRecipeContent(rID) {
     $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
             tableHTML+='<h1 class="page-header">'+table.Items[rID].RecipeName+'</h1>';
             tableHTML+='<h2 class="page-header">Ingredients</h1>';
-            tableHTML+='<p>'+table.Items[rID].RecipeIngredients+'</p>';
+            tableHTML+='<p>'+table.Items[rID].RecipeIngredients.replace("\n", "<br />", "g")+'</p>';
             tableHTML+='<h2 class="page-header">Directions</h1>';
-            tableHTML+='<p>'+table.Items[rID].RecipeDirections+'</p>';
+            tableHTML+='<p>'+table.Items[rID].RecipeDirections.replace("\n", "<br />", "g")+'</p>';
             document.getElementById('recipeContent').innerHTML = tableHTML;
 
 
