@@ -33,7 +33,7 @@ function myFunction() {
 </script>
 <script>
 $(document).ready(function(){
-    var tableHTML = '<table id="myTable"> <tr class="header"> <th style="width:60%;">Name</th> <th style="width:40%;">Country</th></tr>';    
+    var tableHTML = '<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for recipes.."> <table id="myTable"> <tr class="header"> <th style="width:60%;">Name</th> <th style="width:40%;">Country</th></tr>';    
     $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
             var nItems = table.Items.length;
             for (var i = 0; i <nItems ; i++) {
@@ -73,7 +73,7 @@ $(document).ready(function(){
 
         <div class="row">
             <div class="col-lg-4 col-md-4">
-                   <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for recipes..">
+                   <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for recipes.."> -->
                    <div class = "container" id = "recipeTable">
                         
                     </div>
