@@ -92,16 +92,49 @@ function replaceAll(str, find, replace) {
 
 
 
-                   <div class="w3-sidebar w3-bar-block" style="width:25%">
-                   <div  id = "recipeTable">
+                   <div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar">
+                   
+                  </div>
+                 <span class="w3-opennav w3-xlarge" onclick="w3_open()" id="openNav">&#9776;</span>
+                    
+            
+            <div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large"
+  onclick="w3_close()">Close &times;</button>
+  <div  id = "recipeTable">
                         
                     </div>
-                  </div>
-                
-                    <div id = "recipeContent" style="margin-left:25%">
+</div>
+
+<div id="main">
+
+<div class="w3-container w3-teal">
+  <span class="w3-opennav w3-xlarge" onclick="w3_open()" id="openNav">&#9776;</span>
+  <h1>My Page</h1>
+</div>
+
+
+
+<div class="w3-container">
+<div id = "recipeContent" style="margin-left:25%">
                         <p> Hello, Stack Overflow is a community of 6.8 million programmers, just like you, helping each other. Join them; it only takes a minute: </p>
 
                     </div>
-            
-            
+</div>
+
+</div>
+
+<script>
+function w3_open() {
+  document.getElementById("main").style.marginLeft = "25%";
+  document.getElementById("mySidebar").style.width = "25%";
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+  document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
     
