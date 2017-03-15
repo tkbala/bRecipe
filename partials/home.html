@@ -32,12 +32,12 @@ function myFunction() {
 }
 </script>
 <script>
-$(document).ready(function(){
-    $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(data, status){
-             alert("Data: " + data + "\nStatus: " + status);
-             console.log(JSON.stringify(data));
-        });
-    });
+    var table = $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes");
+    console.log("a");
+    console.log(table["responseJSON"].Items.length);
+    console.log("b");
+
+
 </script>
 
     <div>
