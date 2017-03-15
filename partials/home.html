@@ -32,7 +32,7 @@ function myFunction() {
 }
 </script>
 <script>
-    
+$(document).ready(function(){    
 $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){
              
             console.log(table.Items.length);
@@ -61,7 +61,7 @@ $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?Tab
     
             
         });
-
+});
       
 
 </script>
@@ -82,7 +82,7 @@ $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?Tab
         <div class="row">
             <div class="col-lg-4 col-md-4">
                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
-                   <div id = "recipeTable">
+                   <div class = "container" id = "recipeTable">
                         
                     </div>
             </div>
