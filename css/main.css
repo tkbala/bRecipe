@@ -143,7 +143,9 @@ footer {
 #myInput {
     background-image: url('/bRecipe/img/search_icon.png'); /* Add a search icon to input */
     /* background-position: 10px 12px; /* Position the search icon */ 
-    background-size: 30px 30px;
+    background-size: 30px;
+    background-position: left center;
+    background-position-x: 4px;
     background-repeat: no-repeat; /* Do not repeat the icon image */
     width: 100%; /* Full-width */
     font-size: 16px; /* Increase font-size */
