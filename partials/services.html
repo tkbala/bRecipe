@@ -38,7 +38,7 @@ $(document).ready(function(){
         secretAccessKey : 'SECRET_KEY'
     });
 */
-    AWS.config.region = 'Northern California';
+    AWS.config.region = 'us-west-1';
     $("#fileSubmit").click(function() {
         var bucket = new AWS.S3({params: {Bucket: 'brecipe'}});
         var fileChooser = document.getElementById('file');
