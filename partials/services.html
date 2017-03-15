@@ -29,6 +29,32 @@ $(document).ready(function(){
 });
 
 </script>
+
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
+<script type="text/javascript">
+/*
+    AWS.config.update({
+        accessKeyId : 'ACCESS_KEY',
+        secretAccessKey : 'SECRET_KEY'
+    });
+*/
+    AWS.config.region = 'Northern California';
+    $("#fileUploadForm").submit(function() {
+        var bucket = new AWS.S3({params: {Bucket: 'brecipe'}});
+        var fileChooser = document.getElementById('file');
+        var file = fileChooser.files[0];
+        if (file) {
+        var params = {Key: 'FILE_NAME', ContentType: file.type, Body: file};
+        bucket.upload(params).on('httpUploadProgress', function(evt) {
+        console.log("Uploaded :: " + parseInt((evt.loaded * 100) / evt.total)+'%');
+        }).send(function(err, data) {
+        alert("File uploaded successfully.");
+            });
+        }
+    return false;
+    });
+</script>
+
 </head>
 
 
@@ -72,6 +98,10 @@ $(document).ready(function(){
 
         </div>
     </div>
+
+    <form id="fileUploadForm" method="post" enctype="multipart/form-data">
+<input type="file" name="file" id="file" value="dataFile" required="">
+</form>
     <!-- /.row -->
 
 
