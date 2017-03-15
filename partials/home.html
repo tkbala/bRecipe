@@ -37,7 +37,7 @@ $(document).ready(function(){
     $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
             var nItems = table.Items.length;
             for (var i = 0; i <nItems ; i++) {
-                tableHTML+= '<tr><td>'+table.Items[i].RecipeName+'</td><td>Sweden</td></tr>';
+                tableHTML+= '<tr><td>'+table.Items[i].RecipeName+'</td><td><button onclick="setRecipeContent('+i+')">Details</button></td></tr>';
                 /*<tr>'+table.Items[i].RecipeName+'</tr>';*/
 
             };
@@ -54,7 +54,24 @@ $(document).ready(function(){
 });
 
 </script>
+<script type="text/javascript">
+function setRecipeContent(rID) {
+  var tableHTML = '';    
+    $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
+            tableHTML+='<h1 class="page-header">'+table.Items[rID].RecipeName+'</h1>';
+            tableHTML+='<p>'+table.Items[rID].RecipeIngredients+'</p>';
+            tableHTML+='<p>'+table.Items[rID].RecipeDirections+'</p>';
+            document.getElementById('recipeContent').innerHTML = tableHTML;
 
+
+            /*
+                console.log(table.Items.length);
+                document.getElementById('recipeTable').innerHTML = '<table id="myTable"> <tr class="header"> <th style="width:60%;">Name</th> <th style="width:40%;">Country</th></tr><tr class ="tableFoods"><td>Alfreds Futterkiste</td><td>Germany</td></tr><tr><td>Berglunds snabbkop</td><td>Sweden</td></tr><tr><td>Island Trading</td><td>UK</td></tr><tr><td>Koniglich Essen</td><td>Germany</td></tr></table>';            
+            */
+            });
+  
+}
+</script>
 
 <!--
     <div>
@@ -72,12 +89,12 @@ $(document).ready(function(){
     <div class="container">
 
         <div class="row">
-            <div class="col-lg-6 col-md-6">
+            <div >
                    <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for recipes.."> -->
-                   <div class="col-lg-6 col-md-6" id = "recipeTable">
+                   <div class="col-lg-4 col-md-4" id = "recipeTable">
                         
                     </div>
-                    <div class="col-lg-6 col-md-6">
+                    <div id = "recipeContent">
                         <p> Hello, Stack Overflow is a community of 6.8 million programmers, just like you, helping each other. Join them; it only takes a minute: </p>
 
                     </div>
