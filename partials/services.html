@@ -10,10 +10,10 @@ $(document).ready(function(){
         var pRecipeIngredients = '1.Apple \n 2. Banana';
         var pRecipeName = 'AppleBananaSalad';
         pRecipeID = pRecipeID+1;
-        pRecipeName = document.getElementById("NameInput");
-        pRecipeIngredients = document.getElementById("IngredientsInput");
-        pRecipeDirections = document.getElementById("DirectionsInput");
-        
+        pRecipeName = document.getElementById("NameInput").value;
+        pRecipeIngredients = document.getElementById("IngredientsInput").value;
+        pRecipeDirections = document.getElementById("DirectionsInput").value;
+
       $.ajax({
           url: 'https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes',
           type: 'POST',
