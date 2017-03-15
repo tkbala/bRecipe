@@ -206,7 +206,8 @@ function postRecipe(){
          <div class="col-md-16">
             
             </div>
-        <form class="form-basic" action="#">
+        
+            <form class="form-basic" id="file_upload" action="http://brecipe.s3-us-west-1.amazonaws.com/" method="post" enctype="multipart/form-data">
             <div class="form-title-row">
                 <h1>Add Your Recipe</h1>
             </div>
@@ -229,7 +230,7 @@ function postRecipe(){
                 </label>
             </div>
             
-                    <form id="file_upload" action="http://brecipe.s3-us-west-1.amazonaws.com/" method="post" enctype="multipart/form-data">
+                    
                         <div class="form-row">
                 
     
@@ -248,7 +249,7 @@ function postRecipe(){
     <!-- The elements after this will be ignored -->
     <!-- <input type="submit" onclick="postRecipe()" name="submit" value="POST Recipe with File" /> -->
     <button onclick="postRecipe()" name="btnSubmit" >POST Recipe with File</button>
-  </form>
+  
                 </label>
             </div>
         </form>
