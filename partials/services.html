@@ -127,7 +127,8 @@ function postRecipe(){
               
             }
             pRecipeID = temp_UID;
-            
+            document.getElementById("fname").value = pRecipeID.toString();
+            pImageLink = "https://s3-us-west-1.amazonaws.com/brecipe/"+pRecipeID.toString();
 
 
 
