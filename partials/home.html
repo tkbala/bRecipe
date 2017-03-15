@@ -31,22 +31,13 @@ function myFunction() {
   }
 }
 </script>
-<script type="text/javascript"> 
-var table = new AWS.DynamoDB({apiVersion: '2012-08-10', params: {TableName: 'Recipes'}});
-var key = 'RecipeID';
-
-// Write the item to the table
-var itemParams = {
-   Item: {
-     id: {S: key}, 
-     data: {S: 'data'}
-   }
-};
-table.getItem({Key: {id: {S: key}}}, function(err, data) {
-    console.log(data.Item); // print the item data
+<script>
+$(document).ready(function(){
+    $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(data, status){
+             alert("Data: " + data + "\nStatus: " + status);
+             
+        });
     });
-
-
 </script>
 
     <div>
