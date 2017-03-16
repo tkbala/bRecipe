@@ -5,6 +5,7 @@
 
 <script>
 $(document).ready(function(){
+  document.getElementById("addRecipe").style.display = "none";
     $("#getReq").click(function(){
         $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(data, status){
              alert("Data: " + data + "\nStatus: " + status);
@@ -125,7 +126,319 @@ function replaceAll(str, find, replace) {
 -->
 
 
-            <div id="addRecipe"></div>
+            <div id="addRecipe">
+
+<!-- Page Content -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.0.0-rc1.min.js"></script>  
+
+<!--
+<script>
+$(document).ready(function(){
+    $("#getReq").click(function(){
+        var pRecipeID = 1;
+        var pImageLink = 'https://s3-us-west-1.amazonaws.com/brecipe/chicken_biryani.jpg';
+        var pRecipeDirections = 'Cut and Mix all of them';
+        var pRecipeIngredients = '1.Apple \n 2. Banana';
+        var pRecipeName = 'AppleBananaSalad';
+        
+        pRecipeName = document.getElementById("NameInput").value;
+        pRecipeIngredients = document.getElementById("IngredientsInput").value;
+        pRecipeDirections = document.getElementById("DirectionsInput").value;
+
+
+      $.ajax({
+          url: 'https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes',
+          type: 'POST',
+          data: JSON.stringify({"TableName": "Recipes", "Item": {"RecipeID": pRecipeID, "ImageLink": pImageLink, "RecipeIngredients": pRecipeIngredients,"RecipeDirections": pRecipeDirections,"RecipeName": pRecipeName}}),
+          success: function(data) {
+            alert("POSTed successfully");
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert("Error");
+            }
+        });
+    });
+});
+
+</script>
+-->
+
+<!--
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
+<script>
+AWS.config.region = 'us-west-1';
+$(document).ready(function(){
+    $("#getReq").click(function(){
+        var pRecipeID = 1;
+        var pImageLink = 'https://s3-us-west-1.amazonaws.com/brecipe/chicken_biryani.jpg';
+        var pRecipeDirections = 'Cut and Mix all of them';
+        var pRecipeIngredients = '1.Apple \n 2. Banana';
+        var pRecipeName = 'AppleBananaSalad';
+        
+        pRecipeName = document.getElementById("NameInput").value;
+        pRecipeIngredients = document.getElementById("IngredientsInput").value;
+        pRecipeDirections = document.getElementById("DirectionsInput").value;
+        $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
+            
+            var nItems = table.Items.length;
+            var rIDs = [];
+            for (var i = 0; i <nItems ; i++) {
+                rIDs.push(parseInt(table.Items[i].RecipeID));
+
+            };
+            var temp_UID = 1;
+            while(($.inArray(temp_UID, rIDs)!=-1)||(temp_UID==1) ){
+              temp_UID = Math.floor(Math.random() * 200);
+              
+            }
+            pRecipeID = temp_UID;
+            console.log("Outside:");
+                console.log(pRecipeID);
+
+
+            $.ajax({
+              type: "POST",
+              url: "http://brecipe.s3-us-west-1.amazonaws.com/",
+              data: data,
+              success: success,
+              dataType: dataType
+            }); 
+
+
+            $.ajax({
+                console.log("Ajax:");
+                console.log(pRecipeID);
+
+                url: 'https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes',
+                type: 'POST',
+                data: JSON.stringify({"TableName": "Recipes", "Item": {"RecipeID": pRecipeID, "ImageLink": pImageLink, "RecipeIngredients": pRecipeIngredients,"RecipeDirections": pRecipeDirections,"RecipeName": pRecipeName}}),
+                success: function(data) {
+                alert("POSTed successfully");
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                alert("Error");
+                }
+            });
+
+
+
+        });
+    });
+});
+
+  
+</script>
+-->
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
+<script>
+AWS.config.region = 'us-west-1';
+function postRecipe(){
+  var pRecipeID = 1;
+        var pImageLink = 'https://s3-us-west-1.amazonaws.com/brecipe/chicken_biryani.jpg';
+        var pRecipeDirections = 'Cut and Mix all of them';
+        var pRecipeIngredients = '1.Apple \n 2. Banana';
+        var pRecipeName = 'AppleBananaSalad';
+        
+        pRecipeName = document.getElementById("NameInput").value;
+        pRecipeIngredients = document.getElementById("IngredientsInput").value;
+        pRecipeDirections = document.getElementById("DirectionsInput").value;
+        $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
+            
+            var nItems = table.Items.length;
+            var rIDs = [];
+            for (var i = 0; i <nItems ; i++) {
+                rIDs.push(parseInt(table.Items[i].RecipeID));
+
+            };
+            var temp_UID = 1;
+            while(($.inArray(temp_UID, rIDs)!=-1)||(temp_UID==1) ){
+              temp_UID = Math.floor(Math.random() * 200);
+              
+            }
+            pRecipeID = temp_UID;
+            document.getElementById("fname").value = pRecipeID.toString();
+            pImageLink = "https://s3-us-west-1.amazonaws.com/brecipe/"+pRecipeID.toString();
+
+            document.getElementById("file_upload").submit();
+
+            $.ajax({
+
+                url: 'https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes',
+                type: 'POST',
+                data: JSON.stringify({"TableName": "Recipes", "Item": {"RecipeID": pRecipeID, "ImageLink": pImageLink, "RecipeIngredients": pRecipeIngredients,"RecipeDirections": pRecipeDirections,"RecipeName": pRecipeName}}),
+                success: function(data) {
+                alert("POSTed successfully");
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                alert("Error");
+                }
+            });
+
+
+
+        });
+
+};
+</script>
+
+<!--
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
+<script type="text/javascript">
+/*
+    AWS.config.update({
+        accessKeyId : 'ACCESS_KEY',
+        secretAccessKey : 'SECRET_KEY'
+    });
+*/
+    AWS.config.region = 'us-west-1';
+    $("#fileSubmit").click(function() {
+        var bucket = new AWS.S3({params: {Bucket: 'brecipe'}});
+        var fileChooser = document.getElementById('file');
+        var file = fileChooser.files[0];
+        if (file) {
+        var params = {Key: 'FILE_NAME', ContentType: file.type, Body: file};
+        bucket.upload(params).on('httpUploadProgress', function(evt) {
+        console.log("Uploaded :: " + parseInt((evt.loaded * 100) / evt.total)+'%');
+        }).send(function(err, data) {
+        alert("File uploaded successfully.");
+            });
+        }
+    return false;
+    });
+</script>
+-->
+
+
+</head>
+
+
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-4">
+            <h1 class="page-header">
+                
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="../bRecipe/index.html">Home</a>
+                </li>
+                <li class="active">Add Recipe</li> 
+            </ol>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+    
+         <div class="col-md-16">
+            
+            </div>
+        
+            <form class="form-basic" id="file_upload" action="http://brecipe.s3-us-west-1.amazonaws.com/" method="post" enctype="multipart/form-data">
+            <div class="form-title-row">
+                <h1>Add Your Recipe</h1>
+            </div>
+            <div class="form-row">
+                <label>
+                    <span>Recipe name</span>
+                    <input type="text" id="NameInput" />
+                </label>
+            </div>
+            <div class="form-row">
+                <label>
+                    <span>Recipe Ingredients</span>
+                    <textarea id="IngredientsInput" rows = "10" ></textarea>
+                </label>
+            </div>
+            <div class="form-row">
+                <label>
+                    <span>Recipe Directions</span>
+                    <textarea type="text" id="DirectionsInput" rows = "10" ></textarea>
+                </label>
+            </div>
+            
+                    
+                        
+                
+    
+    <input type="hidden"  id="fname" name="key" value="123" />
+
+    <!--
+    <input type="hidden" name="success_action_redirect" value="http://brecipe.s3-us-west-1.amazonaws.com/successful_upload.html" />
+-->
+    
+    <input type="hidden"  name="Content-Type" value="image/jpeg" />
+    <div class="form-row">
+    <label>
+    <span>Image</span>
+    <input type="file"   name="file" /> 
+    </label>
+</div>
+    <!-- The elements after this will be ignored -->
+    <!-- <input type="submit" onclick="postRecipe()" name="submit" value="POST Recipe with File" /> -->
+    <button onclick="postRecipe()" name="btnSubmit" >Add Recipe</button>
+  
+                </label>
+            </div>
+        </form>
+       
+        <!--
+            <table>
+            <tr>
+                <td>
+             <p> Recipe Name </p>   
+         </td>
+         <td>
+            <input type="text" id="NameInput" />
+        </td>
+        </tr>
+            <tr>
+                <td>
+                <p> Recipe Ingredients </p>
+            </td>
+            <td>
+            <textarea id="IngredientsInput" rows = "10" ></textarea>
+        </td>
+    </tr>
+            <tr>
+                <td>
+        
+                <p> Recipe Directions </p>
+            </td>
+            <td>
+            <textarea type="text" id="DirectionsInput" rows = "10" ></textarea>
+        </td>
+    </tr>
+    <tr>
+            
+    
+</tr>
+</table>
+        
+    </div>
+
+   <form id="file_upload" action="http://brecipe.s3-us-west-1.amazonaws.com/" method="post" enctype="multipart/form-data">
+    Image of the Recipe:
+    <input type="hidden"  id="fname" name="key" value="123" /><br />
+
+   
+    
+    <input type="hidden"  name="Content-Type" value="image/jpeg" /><br />
+    File: 
+    <input type="file"   name="file" /> <br />
+    
+    
+    <button onclick="postRecipe()" name="btnSubmit" >POST Recipe with File</button>
+  </form>
+-->
+</div>
+<!-- /.container -->
+
+            </div>
             
             <div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display: block; height: 100%; width: 30%;overflow-y:hidden;" id="mySidebar">
   <button class="w3-bar-item w3-button w3-large"
