@@ -182,7 +182,7 @@ footer {
     
 }
 
-#tableIcon :hover{
+.tableIcon :hover{
     opacity: 0.3
 }
 
