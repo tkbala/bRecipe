@@ -33,7 +33,7 @@ function myFunction() {
 </script>
 <script>
 $(document).ready(function(){
-    var tableHTML = '<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for recipes.."> <table id="myTable"> <tr class="header"> <th style="width:100%;">Recipes</th> <th></th></tr>';    
+    var tableHTML = '<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for recipes.."> <div style="overflow-y:scroll; display:block;height:75%;"><table id="myTable"> <tr class="header"> <th style="width:100%;">Recipes</th> <th></th></tr>';    
     $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
             var nItems = table.Items.length;
             for (var i = 0; i <nItems ; i++) {
@@ -41,7 +41,7 @@ $(document).ready(function(){
                 /*<tr>'+table.Items[i].RecipeName+'</tr>';*/
 
             };
-            tableHTML+='</table>';
+            tableHTML+='</div></table>';
             document.getElementById('recipeTable').innerHTML = tableHTML;
 
 
@@ -96,7 +96,7 @@ function replaceAll(str, find, replace) {
 
 
             
-            <div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display:none;height:200px;" id="mySidebar">
+            <div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-left" style="display: block; height: 100%; width: 25%;overflow-y:hidden;" id="mySidebar">
   <button class="w3-bar-item w3-button w3-large"
   onclick="w3_close()">Close &times;</button>
   <div  id = "recipeTable" >
