@@ -22,6 +22,7 @@ body {
 }
 
 
+
 .img-home-portfolio,
 .img-customer,
 .portfolio-item {
@@ -122,6 +123,7 @@ body {
     font-style: italic;
 }
 
+
 /* Footer Styles */
 footer {
     margin: 50px 0;
@@ -184,6 +186,9 @@ footer {
 
 .tableIcon :hover{
     opacity: 0.3
+}
+.tableImage{
+ object-fit: cover 
 }
 
 /****************************************************************************
