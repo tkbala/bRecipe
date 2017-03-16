@@ -17,10 +17,10 @@
 
 .hi-icon {
 	display: inline-block;
-	font-size: 0px;
+	font-size: 10px;
 	cursor: pointer;
 	margin: 15px 30px;
-	
+	width: 100%;
 	height: 100%;
 	border-radius: 50%;
 	text-align: center;
