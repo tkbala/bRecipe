@@ -42,7 +42,7 @@ $(document).ready(function(){
                 /*
                 tableHTML+= '<tr><td>'+table.Items[i].RecipeName+'</td><td><button  onclick="setRecipeContent('+i+')">Details</button></td></tr>';
                 */
-                tableHTML+= '<tr><td>'+table.Items[i].RecipeName+'</td><td><div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1a"><a class="hi-icon hi-icon-mobile" onclick="setRecipeContent('+i+')"></a> </td></tr>';
+                tableHTML+= '<tr><td>'+table.Items[i].RecipeName+'</td><td><div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1a"><a class="hi-icon hi-icon-list" onclick="setRecipeIngredients('+i+')"></a><a class="hi-icon hi-icon-bookmark" onclick="setRecipeContent('+i+')"></a> </td></tr>';
 
 
                 /*<tr>'+table.Items[i].RecipeName+'</tr>';*/
@@ -71,6 +71,28 @@ function setRecipeContent(rID) {
             tableHTML+='<p>'+replaceAll(table.Items[rID].RecipeIngredients,'\n', "<br>")+'</p>';
             tableHTML+='<h2 class="page-header">Directions</h1>';
             tableHTML+='<p>'+replaceAll(table.Items[rID].RecipeDirections,'\n', "<br>")+'</p>';
+            document.getElementById('recipeContent').innerHTML = tableHTML;
+
+
+            /*
+                console.log(table.Items.length);
+                document.getElementById('recipeTable').innerHTML = '<table id="myTable"> <tr class="header"> <th style="width:60%;">Name</th> <th style="width:40%;">Country</th></tr><tr class ="tableFoods"><td>Alfreds Futterkiste</td><td>Germany</td></tr><tr><td>Berglunds snabbkop</td><td>Sweden</td></tr><tr><td>Island Trading</td><td>UK</td></tr><tr><td>Koniglich Essen</td><td>Germany</td></tr></table>';            
+            */
+            });
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+  w3_close();
+}
+  
+}
+function setRecipeIngredients(rID) {
+  var tableHTML = '';    
+    $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
+            tableHTML+='<h1 class="page-header">Ingredients: '+table.Items[rID].RecipeName+'</h1>';
+            
+            
+            tableHTML+='<p>'+replaceAll(table.Items[rID].RecipeIngredients,'\n', "<br>")+'</p>';
+            
+            
             document.getElementById('recipeContent').innerHTML = tableHTML;
 
 
