@@ -1,0 +1,123 @@
+
+<script>
+$(document).ready(function(){
+    $("#getReq").click(function(){
+        $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(data, status){
+             alert("Data: " + data + "\nStatus: " + status);
+            $("#result").text(JSON.stringify(data)  );
+        });
+      });
+    });
+</script>
+<script>
+function myFunction() {
+  // Declare variables 
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+}
+</script>
+<script>
+$(document).ready(function(){
+    var tableHTML = '<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for recipes.."> <table id="myTable"> <tr class="header"> <th style="width:100%;">Recipes</th> <th></th></tr>';    
+    $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
+            var nItems = table.Items.length;
+            for (var i = 0; i <nItems ; i++) {
+                tableHTML+= '<tr><td>'+table.Items[i].RecipeName+'</td><td><button onclick="setRecipeContent('+i+')">Details</button></td></tr>';
+                /*<tr>'+table.Items[i].RecipeName+'</tr>';*/
+
+            };
+            tableHTML+='</table>';
+            document.getElementById('recipeTable').innerHTML = tableHTML;
+
+
+            /*
+                console.log(table.Items.length);
+                document.getElementById('recipeTable').innerHTML = '<table id="myTable"> <tr class="header"> <th style="width:60%;">Name</th> <th style="width:40%;">Country</th></tr><tr class ="tableFoods"><td>Alfreds Futterkiste</td><td>Germany</td></tr><tr><td>Berglunds snabbkop</td><td>Sweden</td></tr><tr><td>Island Trading</td><td>UK</td></tr><tr><td>Koniglich Essen</td><td>Germany</td></tr></table>';            
+            */
+            });
+
+});
+
+</script>
+<script type="text/javascript">
+function setRecipeContent(rID) {
+  var tableHTML = '';    
+    $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
+            tableHTML+='<h1 class="page-header">'+table.Items[rID].RecipeName+'</h1>';
+            tableHTML+='<p>Image comes here</p>'
+            tableHTML+='<h2 class="page-header">Ingredients</h1>';
+            tableHTML+='<p>'+table.Items[rID].RecipeIngredients.replace("/\\ng", "<br />")+'</p>';
+            tableHTML+='<h2 class="page-header">Directions</h1>';
+            tableHTML+='<p>'+table.Items[rID].RecipeDirections.replace("/\\ng", "<br />")+'</p>';
+            document.getElementById('recipeContent').innerHTML = tableHTML;
+
+
+            /*
+                console.log(table.Items.length);
+                document.getElementById('recipeTable').innerHTML = '<table id="myTable"> <tr class="header"> <th style="width:60%;">Name</th> <th style="width:40%;">Country</th></tr><tr class ="tableFoods"><td>Alfreds Futterkiste</td><td>Germany</td></tr><tr><td>Berglunds snabbkop</td><td>Sweden</td></tr><tr><td>Island Trading</td><td>UK</td></tr><tr><td>Koniglich Essen</td><td>Germany</td></tr></table>';            
+            */
+            });
+  
+}
+function replaceAll(str, find, replace) {
+  return str.replace(new RegExp(find, 'g'), replace);
+}
+</script>
+
+<!--
+    <div>
+  <br>
+<button id="getReq">Send HTTP GET request to a AWS and get result</button>
+<br>
+</div>
+<div id="result">
+  Result
+</div>
+-->
+
+<div class="section">
+
+    <div class="container">
+
+        <div class="row">
+            <table>
+                <tr>
+                    <td style="vertical-align:top">
+                   <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for recipes.."> -->
+                   <div id = "recipeTable">
+                        
+                    </div>
+                </td>
+                <td>
+                    <div id = "recipeContent" style="vertical-align:top">
+                        <p> Hello, Stack Overflow is a community of 6.8 million programmers, just like you, helping each other. Join them; it only takes a minute: </p>
+
+                    </div>
+                </td>
+            </table>
+
+            
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.section -->
+
