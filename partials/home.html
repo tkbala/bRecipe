@@ -37,7 +37,12 @@ $(document).ready(function(){
     $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
             var nItems = table.Items.length;
             for (var i = 0; i <nItems ; i++) {
-                tableHTML+= '<tr><td>'+table.Items[i].RecipeName+'</td><td><button onclick="setRecipeContent('+i+')">Details</button></td></tr>';
+                /*
+                tableHTML+= '<tr><td>'+table.Items[i].RecipeName+'</td><td><button  onclick="setRecipeContent('+i+')">Details</button></td></tr>';
+                */
+                tableHTML+= '<tr><td>'+table.Items[i].RecipeName+'</td><td><img src="/bRecipe/img/recipe.png"  onclick="setRecipeContent('+i+')"></td></tr>';
+
+
                 /*<tr>'+table.Items[i].RecipeName+'</tr>';*/
 
             };
