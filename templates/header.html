@@ -1,5 +1,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script>
+function loadAddRecipe() {
+     document.getElementById("addRecipe").innerHTML='<object type="text/html" data="bRecipe/partials/services.html" ></object>';
+}
+</script>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -16,7 +21,12 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/services"> <i class="material-icons" style=" vertical-align: middle;">add_box</i> Add Recipe </a>
+                <li>
+                    <!--
+                    <a href="#/services"> <i class="material-icons" style=" vertical-align: middle;">add_box</i> Add Recipe </a> 
+                    -->
+                    <a onclick =""> <i class="material-icons" style=" vertical-align: middle;">add_box</i> Add Recipe </a>
+
                 </li>
                 <li><a href="#"> <i class="material-icons" style=" vertical-align: middle;">settings</i> Settings </a>
                 </li>
