@@ -39,7 +39,7 @@ body {
 }
 
 .section-colored {
-    background-color: #ffffff;
+    background-color: #e1e1e1;
     /* change this to change the background color of a colored section */
 }
 
@@ -161,7 +161,7 @@ footer {
     border: 1px solid #ddd; /* Add a grey border */
     font-size: 18px; /* Increase font-size */
     overflow-y:scroll;
-
+     
    height:100%;
    display:block;
 }
