@@ -140,7 +140,7 @@
 
 /* Effect 1 */
 .hi-icon-effect-1 .hi-icon {
-	background: rgba(255,255,255,0.1);
+	background: rgba(70,70,70,0.1);
 	-webkit-transition: background 0.2s, color 0.2s;
 	-moz-transition: background 0.2s, color 0.2s;
 	transition: background 0.2s, color 0.2s;
@@ -163,8 +163,8 @@
 
 /* Effect 1a */
 .hi-icon-effect-1a .hi-icon:hover {
-	background: rgba(255,255,255,1);
-	color: #41ab6b;
+	background: rgba(70,70,70,1);
+	color: #ddd;
 }
 
 .hi-icon-effect-1a .hi-icon:hover:after {
