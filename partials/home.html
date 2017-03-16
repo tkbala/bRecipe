@@ -63,7 +63,7 @@ function setRecipeContent(rID) {
             tableHTML+='<h2 class="page-header">Ingredients</h1>';
             tableHTML+='<p>'+replaceAll(table.Items[rID].RecipeIngredients,'\n', "<br>")+'</p>';
             tableHTML+='<h2 class="page-header">Directions</h1>';
-            tableHTML+='<p>'+table.Items[rID].RecipeDirections.replace("/\\ng", "<br />")+'</p>';
+            tableHTML+='<p>'+replaceAll(table.Items[rID].RecipeDirections,'\n', "<br>")+'</p>';
             document.getElementById('recipeContent').innerHTML = tableHTML;
 
 
