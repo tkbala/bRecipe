@@ -59,7 +59,7 @@ function setRecipeContent(rID) {
   var tableHTML = '';    
     $.get("https://km2bai6m1g.execute-api.us-east-1.amazonaws.com/prod/bRecipeDB?TableName=Recipes", function(table, status){            
             tableHTML+='<h1 class="page-header">'+table.Items[rID].RecipeName+'</h1>';
-            tableHTML+='<div style="display:table-cell; vertical-align:middle; text-align:center"><img src ="'+table.Items[rID].ImageLink+'" height = 30% align="middle"></div>';
+            tableHTML+='<div style="vertical-align:middle; text-align:center"><img src ="'+table.Items[rID].ImageLink+'" height = 30% align="middle"></div>';
             tableHTML+='<h2 class="page-header">Ingredients</h1>';
             tableHTML+='<p>'+replaceAll(table.Items[rID].RecipeIngredients,'\n', "<br>")+'</p>';
             tableHTML+='<h2 class="page-header">Directions</h1>';
