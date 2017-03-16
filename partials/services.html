@@ -231,7 +231,12 @@ function postRecipe(){
                 </label>
             </div>
             
-                    
+              <div class="form-row">
+    <label>
+    <span>Image</span>
+    <input type="file"   name="file" /> 
+    </label>
+</div>      
                         
                 
     
@@ -242,12 +247,7 @@ function postRecipe(){
 -->
     
     <input type="hidden"  name="Content-Type" value="image/jpeg" />
-    <div class="form-row">
-    <label>
-    <span>Image</span>
-    <input type="file"   name="file" /> 
-    </label>
-</div>
+    
     <!-- The elements after this will be ignored -->
     <!-- <input type="submit" onclick="postRecipe()" name="submit" value="POST Recipe with File" /> -->
     <button onclick="postRecipe()" name="btnSubmit" >Add Recipe</button>
