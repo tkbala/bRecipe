@@ -161,7 +161,7 @@ footer {
     border: 1px solid #ddd; /* Add a grey border */
     font-size: 18px; /* Increase font-size */
     overflow-y:scroll;
-     
+
    height:100%;
    display:block;
 }
@@ -181,6 +181,11 @@ footer {
     background-color: #f1f1f1;
     
 }
+
+#tableIcon :hover{
+    opacity: 0.3
+}
+
 /****************************************************************************
 **************** Styles for Adding  Recipe **********************************
 ****************************************************************************/
