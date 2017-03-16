@@ -176,6 +176,7 @@ footer {
 #myTable tr {
     /* Add a bottom border to all table rows */
     border-bottom: 1px solid #ddd; 
+    padding-right: 4px;
 }
 
 #myTable tr.header, #myTable tr:hover {
