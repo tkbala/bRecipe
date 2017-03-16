@@ -270,7 +270,7 @@ function postRecipe(){
                 type: 'POST',
                 data: JSON.stringify({"TableName": "Recipes", "Item": {"RecipeID": pRecipeID, "ImageLink": pImageLink, "RecipeIngredients": pRecipeIngredients,"RecipeDirections": pRecipeDirections,"RecipeName": pRecipeName}}),
                 success: function(data) {
-                alert("POSTed successfully");
+                alert("Recipe added successfully :-)");
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                 alert("Error");
